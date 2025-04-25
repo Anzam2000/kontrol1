@@ -1,35 +1,22 @@
-print('narayana')
-def narayana(arr, length):
-    result = []
-    from itertools import combinations
-    for combo in combinations(arr, length):
-        current = list(combo)
-        print(current)
-        result.append(current.copy())
-        while True:
-            index_j = -1
-            for i in range(length - 2, -1, -1):
-                if current[i] < current[i + 1]:
-                    index_i = i
-                    break
-            else:
-                break
-            for j in range(length - 1, -1, -1):
-                if current[j] > current[index_i]:
-                    index_j = j
-                    break
-            current[index_i], current[index_j] = current[index_j], current[index_i]
-            current[index_i + 1:] = current[:index_i:-1]
-            print(current)
-            result.append(current.copy())
-    return result
-list1 = ['информатика', 'математика', 'русский']
-permutations = narayana(list1, 2)
-print(len(permutations))
-print('itertools')
-import itertools
-a = 0
-for p in itertools.permutations(list1, 2):
-    a += 1
-    print(p)
-print(a)
+class Shape:
+    def calculate(self):
+        pass
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def calculate(self):
+        return self.width * self.height
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def calculate(self):
+        return 3.14 * self.radius ** 2
+class Triangle(Shape):
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
+    def calculate(self):
+        return 0.5 * self.base * self.height
